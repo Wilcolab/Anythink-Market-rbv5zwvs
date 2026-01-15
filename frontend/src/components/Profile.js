@@ -137,6 +137,9 @@ class Profile extends React.Component {
               />
               <h4 className="py-2">{profile.username}</h4>
               <p>{profile.bio}</p>
+              {profile.isVerified && (
+                <span className="badge badge-success">Verified Seller</span>
+              )}
 
               <EditProfileSettings isUser={isUser} />
               <FollowUserButton
