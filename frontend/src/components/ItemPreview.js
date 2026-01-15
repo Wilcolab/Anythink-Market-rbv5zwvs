@@ -65,6 +65,18 @@ const ItemPreview = (props) => {
                 <span className="text-warning font-weight-bold">TOP SELLER</span>
               </>
             )}
+            <span className="text-white pr-1">{item.seller.username}</span>
+            {item.seller.isVerified && (
+              <>
+                <img
+                  src="/verified_seller.svg"
+                  alt="Verified Seller"
+                  className="verified-icon pr-1"
+                  style={{ width: '16px', height: '16px' }}
+                />
+                <span className="text-warning font-weight-bold">TOP SELLER</span>
+              </>
+            )}
           </Link>
           <button className="btn btn-outline-secondary" onClick={handleClick}>
             <i className="ion-heart"></i> {item.favoritesCount}
