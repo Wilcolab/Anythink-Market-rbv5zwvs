@@ -6,6 +6,7 @@ SELECT id,
        hashed_password,
        bio,
        image,
+       is_verified,
        created_at,
        updated_at
 FROM users
@@ -21,6 +22,7 @@ SELECT id,
        hashed_password,
        bio,
        image,
+       is_verified,
        created_at,
        updated_at
 FROM users
@@ -32,7 +34,7 @@ LIMIT 1;
 INSERT INTO users (username, email, salt, hashed_password)
 VALUES (:username, :email, :salt, :hashed_password)
 RETURNING
-    id, created_at, updated_at;
+    id, is_verified, created_at, updated_at;
 
 
 -- name: update-user-by-username<!
@@ -43,7 +45,8 @@ SET username        = :new_username,
     salt            = :new_salt,
     hashed_password = :new_password,
     bio             = :new_bio,
-    image           = :new_image
+    image           = :new_image,
+    is_verified     = :new_is_verified
 WHERE username = :username
 RETURNING
     updated_at;

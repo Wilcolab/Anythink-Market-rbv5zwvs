@@ -10,11 +10,13 @@ class User(RWModel):
     email: str
     bio: str = ""
     image: Optional[str] = None
+    is_verified: bool = False
 
 
 class UserInDB(IDModelMixin, DateTimeModelMixin, User):
     salt: str = ""
     hashed_password: str = ""
+    is_verified: bool = False
 
     def check_password(self, password: str) -> bool:
         return security.verify_password(self.salt + password, self.hashed_password)
